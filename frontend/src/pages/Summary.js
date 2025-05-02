@@ -32,9 +32,9 @@ const Summary = ({ token }) => {
   };
 
   return (
-    <div>
+    <div className='summary'>
       <h2>Summary Chart</h2>
-      <div style={{ maxWidth: '400px' }}>
+      <div style={{ maxWidth: '400px' }} className='summary-chart'>
         <Pie data={chartData} aria-label="Summary Pie Chart" />
       </div>
       <p>This chart visualizes the topics dominating UNCC’s April 2024 news, highlighting the university’s focus areas in research, student life, and innovation. Source: UNCC News Feed.</p>

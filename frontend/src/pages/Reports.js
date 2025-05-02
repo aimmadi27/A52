@@ -50,7 +50,7 @@ const Reports = ({ token }) => {
   };
 
   return (
-    <div>
+    <div className='reports'>
       <h2>Reports Chart</h2>
       <div style={{ maxWidth: '600px' }}>
         <Bar data={chartData} options={options} aria-label="Reports Bar Chart" />
