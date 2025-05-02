@@ -3,12 +3,15 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from jose import JWTError, jwt
 from pydantic import BaseModel
+from dotenv import load_dotenv
+import os
 import uvicorn
 import time
 from db import summary_collection, reports_collection
 
-# JWT Secret
-SECRET_KEY = "your_jwt_secret_here"
+load_dotenv()
+
+SECRET_KEY = os.getenv("SECRET_KEY")
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
