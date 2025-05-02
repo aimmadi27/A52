@@ -21,12 +21,10 @@ fake_user = {
     "password": "akhil"
 }
 
-# OAuth2 setup
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/login")
 
 app = FastAPI()
 
-# Allow CORS for frontend
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -42,13 +40,11 @@ class Token(BaseModel):
 class User(BaseModel):
     username: str
 
-# Authenticate user
 def authenticate_user(username: str, password: str):
     if username == fake_user['username'] and password == fake_user['password']:
         return True
     return False
 
-# Create JWT token
 def create_access_token(data: dict, expires_delta: int = ACCESS_TOKEN_EXPIRE_MINUTES):
     to_encode = data.copy()
     expire = time.time() + expires_delta * 60
@@ -56,7 +52,6 @@ def create_access_token(data: dict, expires_delta: int = ACCESS_TOKEN_EXPIRE_MIN
     encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
     return encoded_jwt
 
-# Dependency
 async def get_current_user(token: str = Depends(oauth2_scheme)):
     credentials_exception = HTTPException(status_code=401, detail="Could not validate credentials")
     try:
