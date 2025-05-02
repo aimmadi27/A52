@@ -5,6 +5,7 @@ import Dashboard from './pages/Dashboard';
 import Summary from './pages/Summary';
 import Reports from './pages/Reports';
 import Navbar from './components/Navbar';
+import './styles/App.css';
 
 const App = () => {
   const [token, setToken] = useState(localStorage.getItem('token'));
